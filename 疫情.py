@@ -54,47 +54,51 @@ def goto(list,x,y,a):
 def refresh(list):
     for i in range(len(list)):
         for j in range(len(list[i])):
-            if list[i][j]!=0:
+            if list[i][j]!=0 and list[i][j]<=2:
+                list=goto(list,j,i,random.randint(1,4))
+            if list[i][j]>2:
+                list[i][j]=list[i][j]-1
                 list=goto(list,j,i,random.randint(1,4))
     return list
 
-def disease(list,a,x,y):
-    if y+1<len(list) and list[y+1][x]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
-            
-    if y-1>-1 and list[y-1][x]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
-            
-    if y+1<len(list) and x+1<len(list[0]) and list[y+1][x+1]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
-            
-    if y+1<len(list) and x-1>-1 and list[y+1][x-1]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
+def disease(list,a,x,y,q):
+    if list[y][x]==1:
+        if y+1<len(list) and list[y+1][x]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
+                
+        if y-1>-1 and list[y-1][x]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
+                
+        if y+1<len(list) and x+1<len(list[0]) and list[y+1][x+1]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
+                
+        if y+1<len(list) and x-1>-1 and list[y+1][x-1]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
 
-    if y>-1 and x+1<len(list[0]) and list[y-1][x+1]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
+        if y>-1 and x+1<len(list[0]) and list[y-1][x+1]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
 
-    if y-1>-1 and x-1>-1 and list[y-1][x-1]==2:
-        b=random.randint(1,100)
-        if b<=a:
-            list[y][x]=2
+        if y-1>-1 and x-1>-1 and list[y-1][x-1]>=2:
+            b=random.randint(1,100)
+            if b<=a:
+                list[y][x]=q
     return list
 
-def refresh2(list,s):
+def refresh2(list,s,q):
     for i in range(len(list)):
         for j in range(len(list[i])):
             if list[i][j]==1:
-                list=disease(list,s,i,j)
+                list=disease(list,s,i,j,q)
     return list
 
 

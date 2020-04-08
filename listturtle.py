@@ -20,8 +20,10 @@ def drawlist(list,bc,y,x):
     for i in range(len(list)):
         if list[i]==1:
             drawpoint(x,y,"blue")
-        elif list [i]==2:
+        elif list[i]==2:
             drawpoint(x,y,"red")
+        elif list[i]>2:
+            drawpoint(x,y,"orange")
         x+=bc
 
 def draw2dlist(list,bc,x,y):
