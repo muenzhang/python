@@ -2,7 +2,7 @@ from listturtle import *
 import turtle
 from 疫情 import *
 from IO import *
-
+import time
 
 list1=[]
 list1=createlist(10)
@@ -16,6 +16,8 @@ for i in range(5):
     printlist(list1)
     write2dlist(list1,"a.txt")
     draw2dlist(list1,20,-200,200)
+    sopeople(list1)
+    time.sleep(1)
     turtle.reset()
 draw2dlist(list1,20,-200,200)
 

@@ -33,3 +33,17 @@ def draw2dlist(list,bc,x,y):
         turtle.penup()
         turtle.goto(x,y)
     time.sleep(1)
+
+def sopeople(list):
+    a=0
+    b=0
+    for i in range(len(list)):
+        for j in range(len(list)):
+            if list[i][j]==2:
+                a+=1
+            if list[i][j]>2:
+                b+=1
+    turtle.goto(200,250)
+    turtle.write("感染人数："+str(a),font=("宋体",15))
+    turtle.goto(200,200)
+    turtle.write("潜伏期人数："+str(b),font=("宋体",15))
